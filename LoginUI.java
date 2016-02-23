@@ -11,13 +11,13 @@ import java.util.Arrays;
  *
  * @author Student
  */
-public class RegisterUI extends javax.swing.JFrame {
+public class LoginUI extends javax.swing.JFrame {
     private final EnrollmentSystem system;
     /**
      * Creates new form RegisterUI
      * @param system
      */
-    public RegisterUI(EnrollmentSystem system) {
+    public LoginUI(EnrollmentSystem system) {
         this.system = system;
         initComponents();
     }
@@ -84,7 +84,7 @@ public class RegisterUI extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameTFActionPerformed
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
-        this.system.register(new Student(usernameTF.getText(), Arrays.toString(passwordTF.getPassword())));
+        this.system.checkLogin(usernameTF.getText(), Arrays.toString(passwordTF.getPassword()));
     }//GEN-LAST:event_registerBtnActionPerformed
 
     /**

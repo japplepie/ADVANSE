@@ -1,6 +1,3 @@
-
-import java.util.Arrays;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,15 +8,13 @@ import java.util.Arrays;
  *
  * @author Student
  */
-public class RegisterUI extends javax.swing.JFrame {
-    private final EnrollmentSystem system;
-    /**
-     * Creates new form RegisterUI
-     * @param system
-     */
-    public RegisterUI(EnrollmentSystem system) {
-        this.system = system;
+public class MainMenu extends javax.swing.JFrame {
+
+    private EnrollmentSystem system;
+    
+    public MainMenu(EnrollmentSystem system) {
         initComponents();
+        this.system = system;
     }
 
     /**
@@ -31,15 +26,18 @@ public class RegisterUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        usernameTF = new javax.swing.JTextField();
+        label = new javax.swing.JLabel();
+        loginBtn = new javax.swing.JButton();
         registerBtn = new javax.swing.JButton();
-        passwordTF = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        usernameTF.addActionListener(new java.awt.event.ActionListener() {
+        label.setText("Hello");
+
+        loginBtn.setText("Login");
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameTFActionPerformed(evt);
+                loginBtnActionPerformed(evt);
             }
         });
 
@@ -50,41 +48,43 @@ public class RegisterUI extends javax.swing.JFrame {
             }
         });
 
-        passwordTF.setText("jPasswordField1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(passwordTF)
-                    .addComponent(usernameTF)
-                    .addComponent(registerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(registerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(loginBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(118, 118, 118)
+                        .addComponent(label)))
+                .addGap(100, 100, 100))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
-                .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(label)
+                .addGap(58, 58, 58)
+                .addComponent(loginBtn)
+                .addGap(27, 27, 27)
                 .addComponent(registerBtn)
-                .addGap(103, 103, 103))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usernameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernameTFActionPerformed
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        system.openLogin(true);
+    }//GEN-LAST:event_loginBtnActionPerformed
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
-        this.system.register(new Student(usernameTF.getText(), Arrays.toString(passwordTF.getPassword())));
+        system.openRegister(true);
     }//GEN-LAST:event_registerBtnActionPerformed
 
     /**
@@ -104,20 +104,20 @@ public class RegisterUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegisterUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegisterUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegisterUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegisterUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField passwordTF;
+    private javax.swing.JLabel label;
+    private javax.swing.JButton loginBtn;
     private javax.swing.JButton registerBtn;
-    private javax.swing.JTextField usernameTF;
     // End of variables declaration//GEN-END:variables
 }
