@@ -4,18 +4,20 @@ import java.util.Iterator;
 public class Course {
     private String courseCode;
     private int units;
-    private ArrayList<Student> enrolledStudents;
+    private int max;
     
-    public Course(String courseCode, int units){
+    
+    public Course(String courseCode, int units, int max){
         this.courseCode = courseCode;
         this.units = units;
-        this.enrolledStudents = new ArrayList<Student>();
+        this.max = max;
+        
     }
     
     public Course(String courseCode, int units, ArrayList<Student> students){
         this.courseCode = courseCode;
         this.units = units;
-        this.enrolledStudents = students;
+    
     }
     
     public String getCouseCode(){
@@ -26,8 +28,8 @@ public class Course {
         return this.units;
     } 
     
-    public Iterator<Student> getEnrolledStudents(){
-        return this.enrolledStudents.iterator();
-    }
     
+    public int getMax(){
+        return this.max;
+    }
 }

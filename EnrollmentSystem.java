@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class EnrollmentSystem {
     DBUtil db;
-    public EnrollmentSytem(){
+    public EnrollmentSystem(){
         db = new DBUtil();
         
     }

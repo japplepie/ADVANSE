@@ -84,6 +84,7 @@ public class RegisterUI extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameTFActionPerformed
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
+        String student = new Student(usernameTF.getText)
         this.system.register(new Student(usernameTF.getText(), Arrays.toString(passwordTF.getPassword())));
     }//GEN-LAST:event_registerBtnActionPerformed
 
