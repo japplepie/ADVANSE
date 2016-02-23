@@ -1,5 +1,8 @@
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.JList;
+import javax.swing.ListModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -14,12 +17,27 @@ import java.util.ArrayList;
 public class ViewCourses extends javax.swing.JFrame {
 
     private EnrollmentSystem system;
+    private ArrayList<String> courseCodes;
     /**
      * Creates new form ViewCourses
      */
     public ViewCourses(EnrollmentSystem system) {
         initComponents();
         this.system = system;
+        
+        Iterator it = system.getCourses();
+        
+        courseCodes = new ArrayList<>();
+        
+        while(it.hasNext())
+        {
+            courseCodes.add(it.next().toString());
+        }
+        
+        courseList = new JList((ListModel) courseCodes);
+        
+        
+        
     }
 
     /**
@@ -31,7 +49,6 @@ public class ViewCourses extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        courseCombo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         courseUnitsLbl = new javax.swing.JLabel();
@@ -42,10 +59,10 @@ public class ViewCourses extends javax.swing.JFrame {
         userUnitsLbl = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
         enrollBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        courseList = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        courseCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel1.setText("No. of Units");
 
@@ -64,6 +81,8 @@ public class ViewCourses extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane1.setViewportView(courseList);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,13 +90,12 @@ public class ViewCourses extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
+                        .addGap(146, 146, 146)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(courseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(55, 55, 55)
-                                .addComponent(jLabel2)))
+                            .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(courseUnitsLbl)
@@ -92,7 +110,7 @@ public class ViewCourses extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(usernameLbl)
                                     .addComponent(userUnitsLbl))))))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(enrollBtn)
@@ -110,16 +128,20 @@ public class ViewCourses extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(userUnitsLbl))
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(courseUnitsLbl))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(courseSlotsLbl)
-                    .addComponent(courseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(courseUnitsLbl))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(courseSlotsLbl)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backBtn)
                     .addComponent(enrollBtn))
@@ -130,7 +152,7 @@ public class ViewCourses extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void enrollBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enrollBtnActionPerformed
-        system.enrollCourse()        // TODO add your handling code here:
+        system.enrollCourse("ID NUMBER HERE PLEASE", courseList.getSelectedValue());        // TODO add your handling code here:
     }//GEN-LAST:event_enrollBtnActionPerformed
 
     /**
@@ -164,7 +186,7 @@ public class ViewCourses extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
-    private javax.swing.JComboBox<String> courseCombo;
+    private javax.swing.JList<String> courseList;
     private javax.swing.JLabel courseSlotsLbl;
     private javax.swing.JLabel courseUnitsLbl;
     private javax.swing.JButton enrollBtn;
@@ -172,6 +194,7 @@ public class ViewCourses extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel userUnitsLbl;
     private javax.swing.JLabel usernameLbl;
     // End of variables declaration//GEN-END:variables

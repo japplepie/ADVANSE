@@ -54,5 +54,15 @@ public class EnrollmentSystem {
         
         return courseCodes.iterator();
     }
+    
+    public void enrollCourse(String idNum, String courseCode)
+    {
+        System.out.println("ALLAHU AKBAR");
+    }
+    
+    public boolean canEnroll()
+    {
+        return true;
+    }
             
 }
