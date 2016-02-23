@@ -25,7 +25,7 @@ public class ViewCourses extends javax.swing.JFrame {
         initComponents();
         this.system = system;
         
-        Iterator it = system.getCourses();
+        Iterator it = system.viewAllCourses().iterator();
         
         courseCodes = new ArrayList<>();
         

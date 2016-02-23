@@ -80,11 +80,12 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        system.openLogin(true);
+        LoginUI li = new LoginUI(system);
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
-        system.openRegister(true);
+        RegisterUI ri = new RegisterUI(system);
+ 
     }//GEN-LAST:event_registerBtnActionPerformed
 
     /**
